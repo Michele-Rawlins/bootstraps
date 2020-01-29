@@ -115,23 +115,57 @@ const printToDom = (divId, textToPrint)=> {
 };
 
 const duckPrinter = (ducks)=>{
-let domString = "";
+    let domString = "";
 for(let i =0; i < ducks.length; i++){
     
     domString += '<div class="card col-md-6 col-lg-4">';
     domString += '<div class ="card">';
     domString += `<img src="${ducks[i].imageUrl}" class="card-img-top" alt="...">`;
     domString += '<div class="card-body">';
-     domString += `<h5 class="card-title">${ducks[i].name}</h5>`;
-     domString += `<p class="card-text">${ducks[i].diet}</p>`;
-     domString += '</div>';
+    domString += `<h5 class="card-title">${ducks[i].name}</h5>`;
+    domString += `<p class="card-text">${ducks[i].diet}</p>`;
+    domString += '</div>';
     domString += '</div>';
     domString += '</div>';
 // domString += `<h2 id = name>${ducks[i].name}</h2>`
 }
 printToDom('name',domString);
 };
+const chooseColor = (e) => {
+    console.log(e);
+    const buttonId = e.target.id;
+    const selectedDucks = [];
+    for(let i = 0; i < ducks.length; i++){
+        if(ducks[i].color === buttonId){
+            selectedDucks.push(ducks[i]);
+        }
+    }
+
+    duckPrinter(selectedDucks);
+};
+
+
+const events = () => {
+    document.getElementById('blue').addEventListener('click',chooseColor);
+    document.getElementById('red').addEventListener('click',chooseColor);
+    document.getElementById('yellow').addEventListener('click',chooseColor);
+}
+
+
+
+
+
+
+
+
+
 const init = () => {
     duckPrinter(ducks);
+    events();
 };
 init();
+
+const chooseFemale = () => {
+    console.log('female');
+
+}
