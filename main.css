@@ -1,3 +1,6 @@
 body {
     background-color: chocolate;
 }
+.card {
+    margin-bottom: 15px 0;
+}
